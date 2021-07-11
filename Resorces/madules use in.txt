@@ -1,0 +1,9 @@
+pip install opencv-python-headless
+pip install pyqt5-tools
+pip install os
+creat dtabasse 
+
+pip install shutil
+
+make folder Data/Upload/AccountProfileimg
+make folder Temp
