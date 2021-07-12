@@ -12,6 +12,7 @@ from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QStackedWidget, 
 
 # ################## my own maduls ##################
 from AR.FORMS.addaccount import AddAccountForm
+from AR.FORMS.buy_form import BuyForm
 from AR.SCREEN import MainScreen
 
 #####################################################
@@ -29,6 +30,11 @@ class mainwin(QMainWindow):
         self.bt_reporting.clicked.connect(self.Bt_reporting)
         #Main Bar Icons or Buttons
         self.bt_addaccount.clicked.connect(self.Add_account)
+        self.bt_buyvouchar.clicked.connect(self.Buy_Vou)
+
+
+
+        
 
 
     def Bt_account(self):
@@ -47,8 +53,11 @@ class mainwin(QMainWindow):
     
 
     def Add_account(self):
-        win.addwin(add_ac_form())
-        win.froward()
+        win.goto(2)
+
+    def Buy_Vou(self):
+        win.goto(3)
+
 
 
 
@@ -57,7 +66,14 @@ class add_ac_form(AddAccountForm):
         super().__init__()
         self.exit.clicked.connect(self.Exit)
     def Exit(self):
-        win.backward()
+        win.goto(1)
+
+class Buy_Form(BuyForm):
+    def __init__(self):
+        super().__init__()
+        self.exit.clicked.connect(self.Exit)
+    def Exit(self):
+        win.goto(1)
 
 
 
@@ -89,7 +105,10 @@ def Run():
     app = QApplication(sys.argv)
     win = MainScreen()
     win.addwin(loginwin())
-    win.addwin(mainwin())
+    win.addwin(mainwin())     # No 1
+    win.addwin(add_ac_form()) # no 2
+    win.addwin(Buy_Form())    # no 3
+
 
 
     print("Run Is RuNNED")
