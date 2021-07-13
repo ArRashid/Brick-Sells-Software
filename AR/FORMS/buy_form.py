@@ -19,6 +19,7 @@ class BuyForm(QDialog):
         file = os.path.join("AR","FORMS","buy_form.ui")
         super(BuyForm, self).__init__()
         loadUi(file, self)
+
         self.timer = QTimer()
         # set timer timeout callback function
         self.timer.timeout.connect(self.viewCam)
@@ -28,6 +29,7 @@ class BuyForm(QDialog):
         self.browse.clicked.connect(self.Browse)
         self.upload = None # browse file pah refarence
         self.capture = None # refare to the camear captre photo in temp folder
+
         self.save.clicked.connect(self.Save)
 
 
@@ -44,45 +46,57 @@ class BuyForm(QDialog):
             if self.upload != None and not self.timer.isActive():
                 print("in if mode")
                 print(self.upload)
-                filename = "Data/Upload/AccountProfileimg/Profile_Picture_of_" + self.name.text() + "_and_emai_" + self.email.text() + "at AR .jpg"
+                filename = "Data/Upload/ChallanScan/Challan_Scan_Copy_of_" + self.field.text() + "_date_" + self.date.text() + "challan no : "+ self.challan.text() +"at AR .jpg"
                 dest = os.path.join(os.getcwd(), filename)
                 shutil.copyfile(self.upload[0], dest)
                 self.pic_path = filename
 
 
             elif not self.timer.isActive() and self.upload == None:
-                filename = "Data/Upload/AccountProfileimg/Profile_Picture_of_" + self.name.text() + "_and_emai_" + self.email.text() + "at AR .jpg"
+                filename = "Data/Upload/ChallanScan/Challan_Scan_Copy_of_" + self.field.text() + "_date_" + self.date.text() + "challan no : "+ self.challan.text() +"at AR .jpg"
                 dest = os.path.join(os.getcwd(), filename)
                 shutil.copyfile(self.capture, dest)
                 self.pic_path = filename
             else:
-                filename = "Resorces/icon128/267.png"
+                filename = "empty challan"
                 self.pic_path = filename
 
 
         except:
-            filename = "Resorces/icon128/267.png"
+            filename = "empty challan"
             self.pic_path = filename
 
+
+
+        print("hare")
         #save data to database by this lines
         save = SqLite("data.db")
         save.Add('''
-        INSERT INTO Accounts
+        INSERT INTO BuyVouchar
         VALUES ('{0}', '{1}', '{2}','{3}' , '{4}', '{5}','{6}')
         
-        '''.format(self.name.text(),self.address.toPlainText(),self.phone.text(),self.email.text(),self.type.currentText(),self.opbalance.text(),self.pic_path))
+        '''.format(562,"none","no date","field adarsha","wb32 d3242","23","data base test"))
+
+        print(self.pic_path)
+        print("all ok")
+
+            # self.bid.text(),
+            #                self.pic_path, 33
+            #                self.date.text(),
+            #                self.field.currentText(),
+            #                self.carno.text(),
+            #                self.challan.text(),
+            #                self.note.text()
+            #                ))
+
+
+
+
+
 
         # after save Reset Field by this lines
-        self.name.setText("")
-        self.address.setPlainText("")
-        self.phone.setText("")
-        self.email.setText("")
-        self.type.setCurrentText("Select Account type")
-        self.opbalance.setText("")
-        self.pic.setPixmap(QPixmap(None))
-        self.upload = None
-        self.pic_path = None
-        self.camera.setText("Camera")
+
+
 
     # view camera
     def viewCam(self):

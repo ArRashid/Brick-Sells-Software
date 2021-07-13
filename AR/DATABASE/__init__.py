@@ -22,6 +22,8 @@ class SqLite():
                 return self.cour.fetchall()
             else:
                 return self.cour.fetchone()
+        except:
+            return self.cour.fetchall()
         finally:
             self.conn.commit()
 
