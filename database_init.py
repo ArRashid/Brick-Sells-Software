@@ -34,10 +34,11 @@ except:
 try:
     a.Add('''CREATE TABLE  BuyProduct(
         bpid integer PRIMARY KEY,
-        quality text,
-        pcs integer,
+        product text,
+        quantity integer,
         rate integer,
-        bid text
+        remark text,
+        bid integer
     )''')
 except:
     print("alredy Table BuyProduct is Exist")

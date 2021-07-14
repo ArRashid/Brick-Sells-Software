@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QStackedWidget, 
 
 # from PyQt5.QtGui import QPixmap, QColor #camera
 # from PyQt5.QtGui import QImage,QPixmap
-# from PyQt5.QtCore import QTimer,QDateTime
+# from PyQt5.QtCore import QTimer,QDateTimeH:\Project\Brick-Sells-Software\venv\Scripts
 
 
 # ################## my own maduls ##################

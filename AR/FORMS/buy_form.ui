@@ -181,9 +181,6 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="3">
-      <widget class="QLineEdit" name="lineEdit_2"/>
-     </item>
      <item row="1" column="2">
       <widget class="QLabel" name="label_5">
        <property name="text">
@@ -191,11 +188,22 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Car No :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Date :</string>
+       </property>
+      </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QDateEdit" name="dateEdit">
+      <widget class="QDateEdit" name="date">
        <property name="focusPolicy">
         <enum>Qt::StrongFocus</enum>
        </property>
@@ -220,37 +228,38 @@
       </widget>
      </item>
      <item row="0" column="3">
-      <widget class="QFontComboBox" name="fontComboBox"/>
+      <widget class="QFontComboBox" name="field"/>
      </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Car No :</string>
-       </property>
-      </widget>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="carno"/>
      </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Date :</string>
-       </property>
-      </widget>
+     <item row="1" column="3">
+      <widget class="QLineEdit" name="challan"/>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QTableWidget" name="table_product">
+    <widget class="QTableWidget" name="table">
+     <property name="minimumSize">
+      <size>
+       <width>600</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="tabletTracking">
       <bool>false</bool>
      </property>
      <property name="acceptDrops">
       <bool>false</bool>
      </property>
+     <property name="dragDropMode">
+      <enum>QAbstractItemView::DropOnly</enum>
+     </property>
      <property name="rowCount">
-      <number>4</number>
+      <number>0</number>
      </property>
      <property name="columnCount">
-      <number>4</number>
+      <number>5</number>
      </property>
      <attribute name="horizontalHeaderMinimumSectionSize">
       <number>60</number>
@@ -258,20 +267,47 @@
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>125</number>
      </attribute>
-     <row/>
-     <row/>
-     <row/>
-     <row/>
-     <column/>
-     <column/>
-     <column/>
-     <column/>
+     <column>
+      <property name="text">
+       <string>Product</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Quantity</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Rate</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Remark</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
     </widget>
    </item>
    <item>
     <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Any note</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="1">
-      <widget class="QPlainTextEdit" name="plainTextEdit">
+      <widget class="QPlainTextEdit" name="note">
        <property name="minimumSize">
         <size>
          <width>100</width>
@@ -289,16 +325,6 @@
        </property>
        <property name="backgroundVisible">
         <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>Any note</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>

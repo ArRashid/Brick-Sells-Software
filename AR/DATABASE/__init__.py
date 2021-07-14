@@ -18,13 +18,20 @@ class SqLite():
     def View(self, quarry):
         self.cour.execute(quarry)
         try:
-            if len(self.cour.fetchall()) > 1:
-                return self.cour.fetchall()
+            record = self.cour.fetchall()
+            print("in try ")
+            if len(record) > 1:
+                print("in try if")
+                return record
             else:
+                print("in try els")
                 return self.cour.fetchone()
         except:
+            print("in exxx")
             return self.cour.fetchall()
         finally:
             self.conn.commit()
+    def Close(self):
+        self.conn.close()
 
 
