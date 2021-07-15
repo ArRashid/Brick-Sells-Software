@@ -10,7 +10,6 @@ import shutil # for copy file
 from datetime import date
 
 
-
 ################ My madulse ###########
 
 from AR.DATABASE import *
@@ -44,16 +43,13 @@ class BuyForm(QDialog):
         self.field.setCurrentText("select")
 
 
-        self.addbtn = QPushButton("add")
-        
+        self.addbtn = QPushButton("add")        
         self.addbtn.clicked.connect(self.add_row)
         self.pdlist = ["No 1 Picket","No 2 Brick","No 3 Picket","No 4 Bricks","No 5 Picket","Base"]
         self.combo = QComboBox()
         self.combo.addItems(self.pdlist)
         
         
-        
-
 
         
         self.get_itemvalue = []
@@ -119,32 +115,27 @@ class BuyForm(QDialog):
         print("tabl also called")
 
     def tabledata(self):
-        # print(self.table.item(0, 0).text())
-
         rows = self.table.rowCount()
-        
-        
+            
         for row in range(rows):
             print("rows :",rows,"row ;",row)
             id = len(self.save.View("SELECT * FROM BuyProduct"))+1
             try:
-                    quantity = int(self.table.item(row, 1).text())
+                quantity = int(self.table.item(row, 1).text())
             except:
                 quantity = 0
-
             try:
-                rate = int(self.table.item(row, 2).text())
+                rate = float(self.table.item(row, 2).text())
             except:
                 rate = 0
             try:
-                remark = int(self.table.item(row, 3).text())
+                remark = self.table.item(row, 3).text()
             except:
                 remark = ""
             
             
             if row == rows -1:
                 
-
                 self.save.Add('''
                 INSERT INTO BuyProduct
                 VALUES ({0}, '{1}', {2}, {3}, '{4}',{5})
@@ -175,11 +166,6 @@ class BuyForm(QDialog):
             
     
         
-
-   
-
-        
-
     # view camera
     def viewCam(self):
         # read image in BGR format
@@ -220,27 +206,28 @@ class BuyForm(QDialog):
 
 
     def tableeras(self):
-        rows =  self.table.rowCount()+1
-        for row in range(rows):
-            print("SSSSSSSSSSSSSSSS",row,"of",rows)
+        
+        self.combo = QComboBox()
+        self.combo.addItems(self.pdlist)
+        self.addbtn = QPushButton("add")
+        self.addbtn.clicked.connect(self.add_row)
+           
         self.table.setRowCount(1)
-            # self.table.removeRow((rows -row)-1)
+        row = self.table.rowCount()-1
+        self.table.setCellWidget(row,0,self.combo)
+        self.table.setItem(row,1,QTableWidgetItem(""))
+        self.table.setItem(row,2,QTableWidgetItem(""))
+        self.table.setItem(row,3,QTableWidgetItem(""))
+        self.table.setCellWidget(row,4,self.addbtn)
+               
         
-        
-
 
     def add_row(self):
         row = self.table.rowCount()
-        self.table.setRowCount(row + 1)
-        
+        self.table.setRowCount(row + 1)        
         self.table.setCellWidget(self.table.rowCount()-1,4,self.addbtn)
-        self.table.setCellWidget(self.table.rowCount()-1,0,self.combo)     
-        
+        self.table.setCellWidget(self.table.rowCount()-1,0,self.combo)             
         self.table.setItem(row -1,0,QTableWidgetItem(self.combo.currentText()))
          
-
-
-    
-        
 
     print("all ok")

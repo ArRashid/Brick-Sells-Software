@@ -108,7 +108,7 @@ def Run():
     win.addwin(mainwin())     # No 1
     win.addwin(add_ac_form()) # no 2
     win.addwin(Buy_Form())    # no 3
-
+    win.goto(3)
 
 
 
