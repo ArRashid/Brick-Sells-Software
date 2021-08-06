@@ -12,8 +12,9 @@ from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QStackedWidget, 
 
 # ################## my own maduls ##################
 from AR.FORMS.addaccount import AddAccountForm
-from AR.FORMS.buy_form import BuyForm
 from AR.SCREEN import MainScreen
+from AR.FORMS.buy_form import BuyForm
+from AR.FORMS.sells_form import SellsForm
 
 #####################################################
 
@@ -75,6 +76,14 @@ class Buy_Form(BuyForm):
     def Exit(self):
         win.goto(1)
 
+class Sells_Form(SellsForm):
+    def __init__(self):
+        super().__init__()
+        self.exit.clicked.connect(self.Exit)
+    def Exit(self):
+        win.goto(1)
+
+
 
 
 class loginwin(QDialog):
@@ -108,7 +117,9 @@ def Run():
     win.addwin(mainwin())     # No 1
     win.addwin(add_ac_form()) # no 2
     win.addwin(Buy_Form())    # no 3
-    win.goto(3)
+    win.addwin(Sells_Form())  # no 4
+    win.goto(4)
+
 
 
 
